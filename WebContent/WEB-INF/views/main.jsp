@@ -1,30 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JPA</title>
 </head>
 <body>
-
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Last Name</th>
-			<th>Age</th>
-			<th>Status</th>
-		</tr>
-			<c:forEach items="${students}" var="students">
-			<tr>
-				<td>${students.sName}</td>
-				<td>${students.lName}</td>
-				<td>${students.sAge}</td>
-				<td>${students.activoDelegate}</td>
-			</tr>
-			</c:forEach>
-	</table>
-
+	<form:form action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="students">
+		<label>Ingrese el codigo del estudiante que quiere revisar: </label>
+		<form:input type="text" name="cStudent" path="cStudent"/>
+		<br>
+		<input type="submit" value="Buscar estudiante">
+	</form:form>
 </body>
 </html>
